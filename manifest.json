@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "Universal App",
+  "description": "This extension can change currency, units and translate text.",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "assets/icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches":    ["https://*.facebook.com/*"],
+      "js":        ["assets/jquery-1.12.0.min.js", "assets/removeFacebookPosts.js"]
+    }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "https://*.facebook.com/*",
+    "storage"
+  ]
+}

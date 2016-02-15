@@ -36,8 +36,8 @@ $(document).ready(function () {
 		var type = $(this).closest('.tabBox').data('unittype');
 
         var nextTextInput = $(this)
-            .closest('.unitBox')
-            .siblings('.unitBox')
+            .closest('.toolBox')
+            .siblings('.toolBox')
             .find('.toolTextInput');
 
         var exchangeName = $(this).attr('name') + 'To' + $(nextTextInput).attr('name');
@@ -57,11 +57,11 @@ $(document).ready(function () {
 	/* Exchange - Unit Convertor */
     $('.exchangeIcon').on('click', function () {
 
-        var unitBox1 = $(this).prev('.unitBox').clone();
-        var unitBox2 = $(this).next('.unitBox').clone();
+        var toolBox1 = $(this).prev('.toolBox').clone();
+        var toolBox2 = $(this).next('.toolBox').clone();
 
-        $(this).prev('.unitBox').replaceWith(unitBox2);
-        $(this).next('.unitBox').replaceWith(unitBox1);
+        $(this).prev('.toolBox').replaceWith(toolBox2);
+        $(this).next('.toolBox').replaceWith(toolBox1);
 
     });
 

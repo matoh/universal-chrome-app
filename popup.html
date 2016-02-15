@@ -1,117 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <meta charset="utf-8">
     <title>Universal Tools</title>
     <script src="assets/jquery-1.12.0.min.js"></script>
     <script src="assets/settings.js"></script>
-    <style>
-
-        body {
-            min-width: 300px;
-            background-color: lightslategray;
-            color: white;
-        }
-
-        body .topLabel {
-            text-align: center;
-            margin: 0px;
-            font-variant: small-caps;
-        }
-
-        .radioBox {
-            margin-left: 60px;
-        }
-
-        .bodyWrapper .exchangeIcon {
-            background-color: floralwhite;
-            margin: 0px 15px -9px 15px;
-            width: 25px;
-            border-radius: 15px;
-            cursor: pointer;
-        }
-
-        .bodyWrapper .unitBox {
-            float: left;
-        }
-
-        .underlineText {
-            text-decoration: underline;
-        }
-
-        .clearfix {
-            clear: both;
-        }
-
-        .pullLeft {
-            float: left;
-        }
-
-        .textCenter {
-            text-align: center;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .toolTextInput {
-            width: 80px;
-        }
-
-        .cb-enable, .cb-disable, .cb-enable span, .cb-disable span {
-            background: url(assets/switch.gif) repeat-x;
-            display: block;
-            float: left;
-        }
-
-        .cb-enable span, .cb-disable span {
-            line-height: 30px;
-            display: block;
-            background-repeat: no-repeat;
-            font-weight: bold;
-            border-right: 2px solid black;
-        }
-
-        .cb-enable span {
-            background-position: left 30px;
-            padding: 0 10px;
-            color: black;
-        }
-
-        .cb-disable span {
-            background-position: right 0px;
-            padding: 0 10px;
-            color: black;
-        }
-
-        .cb-disable.selected {
-            background-position: 0 -30px;
-        }
-
-        .cb-disable.selected span {
-            background-position: right -30px;
-            color: white;
-        }
-
-        .cb-enable.selected {
-            background-position: 0 -60px;
-        }
-
-        .cb-enable.selected span {
-            background-position: left -60px;
-            color: white;
-        }
-
-        .switch label {
-            cursor: pointer;
-        }
-
-        .switch input {
-            display: none;
-        }
-
-    </style>
+    <link rel="stylesheet" href="assets/style.css">
+    
 </head>
 <body>
 
@@ -123,18 +19,18 @@
 
     <input type="radio" class="" name="toolTabs" value="unitConvertor" id="unitConvertor" checked>
     <input type="radio" class="" name="toolTabs" value="currencyConventor" id="currencyConventor">
-    <input type="radio" class="" name="toolTabs" value="2" id="hideFriendsPosts2">
+    <input type="radio" class="" name="toolTabs" value="translator" id="translator">
 
 
     <label for="unitConvertor" class="radioUiBtn cb-enable selected" data-tabvalue="unitConvertor">
         <span>Unit</span>
     </label>
 
-    <label for="currencyConventor" class="radioUiBtn cb-enable " data-tabvalue="currencyConventor">
+    <label for="currencyConventor" class="radioUiBtn cb-enable" data-tabvalue="currencyConventor">
         <span>Currency</span>
     </label>
 
-    <label for="hideFriendsPosts2" class="radioUiBtn cb-enable" data-tabvalue="2">
+    <label for="translator" class="radioUiBtn cb-enable" data-tabvalue="translator">
         <span>Translator</span>
     </label>
 
@@ -145,20 +41,20 @@
 
 <div class="bodyWrapper">
 
-    <div class="tabBox" id="unitConvertorBox">
+    <div class="tabBox" id="unitConvertorBox" data-unittype="unitRatio">
 
         <h3 class="underlineText">Unit Convertor</h3>
 
         <div>
-            <p class="toolItem">Change KG to Pounds </p>
-            <div class="unitBox">
+            <p class="toolItem">Change <span class="toolBadge">Kg</span> to <span class="toolBadge">Pounds</span> </p>
+            <div class="toolBox">
                 <input type="number" class="toolTextInput" name="kg" value="" step="1">
                 <span style="">Kg</span>
             </div>
 
-            <img src="exchange.png" class="exchangeIcon pullLeft">
+            <img src="assets/exchange.png" class="exchangeIcon pullLeft" alt="exchangeIcon">
 
-            <div class="unitBox">
+            <div class="toolBox">
                 <input type="number" class="toolTextInput" name="pound" value="" step="1">
                 <span>Pounds</span>
             </div>
@@ -166,33 +62,125 @@
         </div>
         <div class="clearfix"></div>
 
-        <hr style="margin: 15px 0px -5px 0px;">
+        <hr class="hrSplitter">
 
         <div>
-            <p class="toolItem">Change Mile to Km </p>
-            <div class="unitBox">
-                <input type="number" class="toolTextInput" name="mile" value="" step="1">
-                <span style="">Mile</span>
-            </div>
-
-            <img src="exchange.png" class="exchangeIcon pullLeft">
-
-            <div class="unitBox">
+            <p class="toolItem">Change <span class="toolBadge">Km</span> to <span class="toolBadge">Mile</span> </p>
+              
+	    <div class="toolBox">
                 <input type="number" class="toolTextInput" name="km" value="" step="1">
                 <span>Km</span>
             </div>
 
+            <img src="assets/exchange.png" class="exchangeIcon pullLeft" alt="exchangeIcon">
+
+	    <div class="toolBox">
+                <input type="number" class="toolTextInput" name="mile" value="" step="1">
+                <span style="">Mile</span>
+            </div>
+          
         </div>
 
         <div class="clearfix"></div>
 
     </div>
 
-    <div class="tabBox" id="currencyConventorBox" style="display: none;">
+    <div class="tabBox" id="currencyConventorBox" data-unittype="currencyRatio" style="display: none;">
 
-        xxx yyy
+        <h3 class="underlineText">Currency Convertor</h3>
 
+        <div>
+            <p class="toolItem">Change <span class="toolBadge">Eur</span> to <span class="toolBadge">Pounds</span> </p>
+            <div class="toolBox">
+                <input type="number" class="toolTextInput" name="euro" value="" step="1">
+                <span style="">Eur</span>
+            </div>
 
+            <img src="assets/exchange.png" class="exchangeIcon pullLeft" alt="exchangeIcon">
+
+            <div class="toolBox">
+                <input type="number" class="toolTextInput" name="pound" value="" step="1">
+                <span>Pounds</span>
+            </div>
+
+        </div>
+	
+	<div class="clearfix"></div>
+
+        <hr class="hrSplitter">
+
+        <div>
+	    
+            <p class="toolItem">Change <span class="toolBadge">Euro</span> to <span class="toolBadge">Czech Koruna</span> </p>
+              
+	    <div class="toolBox">
+                <input type="number" class="toolTextInput" name="euro" value="" step="1">
+                <span>Eur</span>
+            </div>
+
+            <img src="assets/exchange.png" class="exchangeIcon pullLeft" alt="exchangeIcon">
+
+	    <div class="toolBox">
+                <input type="number" class="toolTextInput" name="ckoruna" value="" step="1">
+                <span style="">CZK</span>
+            </div>
+          
+        </div>
+	
+	<div class="clearfix"></div>
+
+        <hr class="hrSplitter">
+	
+	 <div>
+	     <p class="toolItem">Change <span class="toolBadge">Eur</span> to <span class="toolBadge">Zloty</span> </p>
+            <div class="toolBox">
+                <input type="number" class="toolTextInput" name="euro" value="" step="1">
+                <span>Eur</span>
+            </div>
+
+            <img src="assets/exchange.png" class="exchangeIcon pullLeft" alt="exchangeIcon">
+
+            <div class="toolBox">
+                <input type="number" class="toolTextInput" name="zloty" value="" step="1">
+                <span>Zloty</span>
+            </div>
+
+        </div>.
+	
+        <div class="clearfix"></div>
+
+    </div>
+    
+    <div class="tabBox" id="translatorBox" data-unittype="-">
+	
+	<a href="" class="hidden linkHelper" target="_blank"></a>
+	
+        <h3 class="underlineText">Simple Translator</h3>
+
+        <div>
+            <p class="toolItem">Translate From <span class="toolBadge">SK</span> to <span class="toolBadge">En</span> </p>
+            <div class="toolBox">
+                <textarea class="toolTextArea" data-language="sk/en"></textarea>
+		<div class="textCenter">
+		    <button class="toolBtn translateRedirect">Redirect And Translate</button>
+		</div>
+            </div>
+	</div>
+	      
+	<div class="clearfix"></div>
+	
+	<div>        
+	    <p class="toolItem">Translate From <span class="toolBadge">En</span> to <span class="toolBadge">Sk</span> </p>
+            <div class="toolBox">
+		<textarea class="toolTextArea" data-language="en/sk"></textarea>
+		<div class="textCenter">
+		    <button class="toolBtn translateRedirect">Redirect And Translate</button>
+		</div>
+            </div>
+
+        </div>
+	
+        <div class="clearfix"></div>
 
     </div>
 
